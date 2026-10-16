@@ -45,7 +45,7 @@
           aptConfigStub = pkgs.writeShellScriptBin "apt-config" "exit 0";
         in
         {
-          default = pkgs.mkShell {
+          ceph-charms = pkgs.mkShell {
             packages = [
               python
               python.pkgs.tox
