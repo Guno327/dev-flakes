@@ -33,7 +33,7 @@
     in
     {
       devShells.${system} = {
-        default = pkgs.mkShell {
+        sunbeam-charms = pkgs.mkShell {
           packages = [
             pkgs.python312
             tox
@@ -45,7 +45,7 @@
             pkgs.zlib
           ];
         };
-        hypervisor = pkgs.mkShell {
+        snap-openstack-hypervisor = pkgs.mkShell {
           packages = with pkgs; [
             python314
             uv
@@ -95,7 +95,10 @@
             pkgs.openssl
             pkgs.libffi
           ];
-          NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.zlib ];
+          NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc.lib
+            pkgs.zlib
+          ];
           NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
         };
       };
